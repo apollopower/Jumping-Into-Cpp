@@ -1,12 +1,21 @@
-// For loop implementation
-
-# import <iostream>
+# include <iostream>
+# include <string>
 
 using namespace std;
 
 int main() {
-    for (int i = 1; i < 11; i++) {
-        cout << "The SQUARE of " << i << " is: " << i * i << "\n";
+    string password;
+
+    cout << "Please enter the password: ";
+    cin >> password;
+
+    if (password == "password") {
+        cout << "Access granted!" << "\n";
     }
-    return 0;
+    else {
+        cout << "Access denied. Wrong password" << "\n";
+        // returning is a convinient way to stop the program
+        return 0;
+    }
+    // continue onward!
 }

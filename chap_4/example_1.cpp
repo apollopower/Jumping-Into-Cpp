@@ -1,15 +1,21 @@
-// Implementation of a while loop
-
-# import <iostream>
+# include <iostream>
+# include <string>
 
 using namespace std;
 
 int main() {
-    int i = 0; // First declaring our loop var
+    int num;
 
-    while (i < 10) {
-        cout << i << "\n";
-        i++;
+    cout << "Please enter a number: ";  
+    cin >> num;
+
+    if (num > 10) {
+        cout << "Wow, that's a big number!\n";
     }
-    return 0;
+    else if (num == 10) {
+        cout << "Your number equals 10. Shocker!\n";
+    }
+    else {
+        cout << "Thats a pretty small number.\n";
+    }
 }
