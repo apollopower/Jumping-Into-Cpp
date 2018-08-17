@@ -12,6 +12,9 @@ struct LinkedList {
     LinkedList* p_next_element;
 };
 
+// Globally setting head of linked list
+LinkedList* p_list = NULL;
+
 LinkedList* buildLinkedList(LinkedList* p_list, int num) {
     LinkedList* p_element = new LinkedList;
     p_element->number = num;
@@ -19,28 +22,29 @@ LinkedList* buildLinkedList(LinkedList* p_list, int num) {
     return p_element;
 }
 
-void removeElement(LinkedList* p_list, int element) {
+void removeElement(int element) {
     LinkedList* p_current = p_list;
     LinkedList* p_prev = NULL;
 
-    if (p_current->number == element) {
-        p_current = p_list->p_next_element;
+    if (p_list->number == element) {
+        LinkedList* p_temp = p_list->p_next_element;
+
         delete p_list;
-        p_list = p_current;
+        p_list = p_temp;
+        return;
     }
-    else {
-        while (p_current->number != element) {
-            p_prev = p_current;
-            p_current = p_current->p_next_element;
-        }
-        p_prev->p_next_element = p_current->p_next_element;
-        delete p_current;  
+
+    while (p_current->number != element) {
+        p_prev = p_current;
+        p_current = p_current->p_next_element;
     }
+
+    p_prev->p_next_element = p_current->p_next_element;
+    delete p_current;
+
 }
 
 int main() {
-    // Setting head of linked list
-    LinkedList* p_list = NULL;
     int length;
     int element;
 
@@ -62,7 +66,7 @@ int main() {
     cout << "Choose a number from above to remove from the linked list: ";
     cin >> element;
 
-    removeElement(p_list, element);
+    removeElement(element);
 
     cout << "Printing values of current linked list: \n";
 
