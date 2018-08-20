@@ -50,6 +50,7 @@ int main()
     cout << "Deleting the entire tree!\n";
 
     destroyTree(p_tree);
+    p_tree = NULL;
 
 }
 
